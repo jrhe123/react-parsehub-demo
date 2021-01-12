@@ -6,7 +6,7 @@ export const api = (url, params) => {
     axios
       .get(serverUrl)
       .then(response => {
-        if (response.status != 200) {
+        if (response.status !== 200) {
           reject({ Message: "API external error" });
           return;
         }

@@ -89,6 +89,7 @@ class App extends Component {
                   handleNavigatePath={(index) => this.handleNavigatePath(index)}
                 />
                 <Contents
+                  tabs={this.state.pathArray}
                   contents={this.state.contents}
                   handleAddPath={(path) => this.handleAddPath(path)}
                 />
@@ -149,6 +150,15 @@ class Contents extends Component {
   state = {
     isViewFile: false,
     file: null
+  }
+
+  componentDidUpdate(prevProps, prevState) {
+    if (prevProps.tabs.length !== this.props.tabs.length) {
+      this.setState({
+        isViewFile: false,
+        file: null
+      })
+    }
   }
 
   handleViewFile = (file) => {
